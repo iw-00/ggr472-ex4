@@ -10,24 +10,24 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
 
-    // map.addSource("stargazing-sites", {
-    //     type: "geojson",
-    //     data: "https://iw-00.github.io/ggr472-lab1/data/stargazing_sites.geojson"
-    // });
+    map.addSource("stargazing-sites", {
+        type: "geojson",
+        data: "https://iw-00.github.io/ggr472-lab1/data/stargazing_sites.geojson"
+    });
     
-    // map.addLayer({
-    //     id: "stargazing-pt",
-    //     type: "circle",
-    //     source: "stargazing-sites",
-    //     paint: {
-    //         "circle-radius": 4,
-    //         "circle-color": "#ebe834"
-    //     }
-    // })
+    map.addLayer({
+        id: "stargazing-pt",
+        type: "circle",
+        source: "stargazing-sites",
+        paint: {
+            "circle-radius": 4,
+            "circle-color": "#ebe834"
+        }
+    })
 
     map.addSource("buildings-data", {
         type: "geojson",
-        data: "data/buildings.geojson"
+        data: "https://raw.githubusercontent.com/iw-00/ggr472-ex4/refs/heads/main/data/buildings.geojson"
     });
     
     map.addLayer({
@@ -36,9 +36,12 @@ map.on("load", () => {
         source: "buildings-data",
         paint: {
             "circle-radius": 4,
-            "circle-color": "#007cbf"
+            "circle-color": "#1ff258"
         }
     })
+
+    
+
 
 
 })
