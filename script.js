@@ -10,21 +10,23 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
 
-    map.addSource("stargazing-sites", {
-        type: "geojson",
-        data: "https://iw-00.github.io/ggr472-lab1/data/stargazing_sites.geojson"
-    });
+    // Add stargazing sites as points
+    // map.addSource("stargazing-sites", {
+    //     type: "geojson",
+    //     data: "https://iw-00.github.io/ggr472-lab1/data/stargazing_sites.geojson"
+    // });
     
-    map.addLayer({
-        id: "stargazing-pt",
-        type: "circle",
-        source: "stargazing-sites",
-        paint: {
-            "circle-radius": 4,
-            "circle-color": "#ebe834"
-        }
-    })
+    // map.addLayer({
+    //     id: "stargazing-pt",
+    //     type: "circle",
+    //     source: "stargazing-sites",
+    //     paint: {
+    //         "circle-radius": 4,
+    //         "circle-color": "#ebe834"
+    //     }
+    // })
 
+    // Add buildings as points
     map.addSource("buildings-data", {
         type: "geojson",
         data: "https://raw.githubusercontent.com/iw-00/ggr472-ex4/refs/heads/main/data/buildings.geojson"
@@ -38,7 +40,28 @@ map.on("load", () => {
             "circle-radius": 4,
             "circle-color": "#1ff258"
         }
-    })
+    });
+
+    // Add Toronto census tracts (zoom in to see on map).
+    map.addSource("toronto-ct-data", {
+        type: "vector",
+        url: "mapbox://iw00.c9uhqvg4"
+    });
+
+    map.addLayer({
+        id: "toronto-ct",
+        type: "fill",
+        source: "toronto-ct-data",
+        paint: {
+            "fill-color": "#f768c5",
+            "fill-opacity": 0.4,
+            "fill-outline-color": "#8f1464"
+        },
+        "source-layer": "torontoct-0pw4sa"
+    },
+    // Draw building points over census tracts.
+    "buildings-pt"
+);
 
     
 
